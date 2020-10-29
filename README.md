@@ -13,7 +13,7 @@ expo install react-native-typical
 ```
 
 ## Usage
-```
+```jsx
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import TypingText from "react-native-typical";
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
 | Name  | Type                | Example                               |
 |-------| --------------------| ------------------------------------- |
 | steps | Array []            | ["string", 1000, "some more", 1000]   |
-| loop  | number              | `5 | 10 | Infinity` etc.              |
+| loop  | number              | 5, 10, Infinity etc.                  |
 | style | react native styles | `{[styles.text, {fontSize: 50}]}` etc.|
 
 ----------
