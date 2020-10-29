@@ -14,7 +14,7 @@ async function type(ref, args) {
 				await wait(arg);
 				break;
 			case "function":
-				await arg(ref, ...args);
+				await arg(ref, args);
 				break;
 			default:
 				await arg;
@@ -23,8 +23,9 @@ async function type(ref, args) {
 }
 
 async function edit(ref, text) {
-	const overlap = getOverlap(ref.current.text, text);
-	await perform(ref, [...deleter(ref.current.text, overlap), ...writer(text, overlap)]);
+	if (!ref || !ref.current) return;
+	const overlap = getOverlap(ref.current.text || "", text);
+	await perform(ref, [...deleter(ref.current.text || "", overlap), ...writer(text, overlap)]);
 }
 
 async function perform(ref, edits, speed = 60) {
@@ -36,11 +37,11 @@ async function perform(ref, edits, speed = 60) {
 
 function* editor(edits) {
 	for (const edit of edits) {
-		yield (ref) =>
-			requestAnimationFrame(() => {
-				ref.current.text = edit;
-				ref.current.setText(edit);
-			});
+		yield (ref) => requestAnimationFrame(() => {
+			if (!ref || !ref.current) return;
+			ref.current.text = edit;
+			ref.current.setText(edit);
+		});
 	}
 }
 
@@ -63,8 +64,9 @@ const TypingText = ({ steps = initSteps, loop, style = { fontSize: 14 } }) => {
 
 	useEffect(() => {
 		if (loop === Infinity) type(textRef, steps.concat(type));
-		if (typeof loop === "number") type(textRef, Array(loop).fill(steps).flat());
+		else if (typeof loop === "number") type(textRef, Array(loop).fill(steps).flat());
 		else type(textRef, steps);
+		return () => textRef.current = null;
 	}, []);
 
 	return <Text style={style}>{text}</Text>;
