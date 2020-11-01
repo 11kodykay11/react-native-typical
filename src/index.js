@@ -25,7 +25,8 @@ async function type(ref, args) {
 async function edit(ref, text) {
 	if (!ref || !ref.current) return;
 	const overlap = getOverlap(ref.current.text || "", text);
-	await perform(ref, [...deleter(ref.current.text || "", overlap), ...writer(text, overlap)]);
+	await perform(ref, [...deleter(ref.current.text || "", overlap)], ref.current.deleteDelay);
+	await perform(ref, [...writer(text, overlap)], ref.current.editDelay);
 }
 
 async function perform(ref, edits, speed = 60) {
@@ -58,10 +59,10 @@ function* deleter([...text], startIndex = 0, endIndex = text.length) {
 }
 
 const initSteps = ["This", 500, "is", 500, "react-native-typical", 1000];
-const TypingText = ({ steps = initSteps, loop, style = { fontSize: 14 }, blinkCursor = true }) => {
+const TypingText = ({ steps = initSteps, loop, style = { fontSize: 14 }, blinkCursor = true, editDelay = 60, deleteDelay = 60 }) => {
 	const [text, setText] = useState("");
 	const [blinker, setBlinker] = useState(blinkCursor);
-	const textRef = useRef({ text, setText });
+	const textRef = useRef({ text, setText, editDelay, deleteDelay });
 
 	useEffect(() => {
 		let id = 0;
