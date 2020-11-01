@@ -58,9 +58,19 @@ function* deleter([...text], startIndex = 0, endIndex = text.length) {
 }
 
 const initSteps = ["This", 500, "is", 500, "react-native-typical", 1000];
-const TypingText = ({ steps = initSteps, loop, style = { fontSize: 14 } }) => {
+const TypingText = ({ steps = initSteps, loop, style = { fontSize: 14 }, blinkCursor = true }) => {
 	const [text, setText] = useState("");
+	const [blinker, setBlinker] = useState(blinkCursor);
 	const textRef = useRef({ text, setText });
+
+	useEffect(() => {
+		let id = 0;
+		if (blinkCursor) {
+			setBlinker(true);
+			id = setInterval(() => setBlinker(p => !p), 500);
+		}
+		return () => clearInterval(id);
+	}, [text]);
 
 	useEffect(() => {
 		if (loop === Infinity) type(textRef, steps.concat(type));
@@ -69,7 +79,7 @@ const TypingText = ({ steps = initSteps, loop, style = { fontSize: 14 } }) => {
 		return () => textRef.current = null;
 	}, []);
 
-	return <Text style={style}>{text}</Text>;
+	return <Text style={style}>{text}{blinker && `|`}</Text>;
 };
 
 export default TypingText;
