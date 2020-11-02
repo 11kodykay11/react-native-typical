@@ -77,10 +77,13 @@ const TypingText = ({ steps = initSteps, loop, style = { fontSize: 14 }, blinkCu
 		if (loop === Infinity) type(textRef, steps.concat(type));
 		else if (typeof loop === "number") type(textRef, Array(loop).fill(steps).flat());
 		else type(textRef, steps);
-		return () => textRef.current = null;
-	}, []);
+	}, [steps]);
 
-	return <Text style={style}>{text}{blinker && `|`}</Text>;
+	// This is to keep cleanup out of the above loop.
+	// Any new steps will reset the ref if placed above
+	useEffect(() => () => textRef.current = null, []);
+
+	return <Text style={style}>{text}{(blinker && `|`) || ` `}</Text>;
 };
 
 export default TypingText;

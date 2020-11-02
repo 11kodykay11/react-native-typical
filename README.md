@@ -3,6 +3,10 @@
 React native version of react-typical package.
 
 ## Change Log
+1.1.2
+- Fixed a bug for not rendering dynamic steps
+- Fixed an issue regarding cursor on center text align
+
 1.1.1
 - Updated README.md file.
 
