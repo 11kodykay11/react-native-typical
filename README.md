@@ -58,6 +58,7 @@ export default function App() {
 				]}
 				loop={5}
 				blinkCursor={true}
+				blinkChar="_"
 				editDelay={80}
 				deleteDelay={10}
 			/>
@@ -81,10 +82,11 @@ const styles = StyleSheet.create({
 ## Properties
 
 | Name        | Type                | Example                                |
-| ----------- | ------------------- | -------------------------------------- |
+|-------------|---------------------|----------------------------------------|
 | steps       | Array []            | ["string", 1000, "some more", 1000]    |
 | loop        | number              | 5, 10, Infinity etc.                   |
 | blinkCursor | boolean             | true (default)                         |
+| blinkChar   | string              | "|" (default)                          |
 | editDelay   | number              | 60 (default)                           |
 | deleteDelay | number              | 60 (default)                           |
 | style       | react native styles | `{[styles.text, {fontSize: 50}]}` etc. |
