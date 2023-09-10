@@ -1,6 +1,6 @@
 {
 	"name": "react-native-typical",
-	"version": "1.1.2",
+	"version": "1.2.0",
 	"description": "react-typical for React Native. react-typical have trouble running in react native app due to the use of node. ",
 	"main": "src/index.js",
 	"scripts": {
@@ -20,5 +20,8 @@
 	"bugs": {
 		"url": "https://github.com/11kodykay11/react-native-typical/issues"
 	},
-	"homepage": "https://github.com/11kodykay11/react-native-typical#readme"
+	"homepage": "https://github.com/11kodykay11/react-native-typical#readme",
+	"devDependencies": {
+		"typescript": "^5.2.2"
+	}
 }
