@@ -138,13 +138,13 @@ type Steps =
 	| ((ref: MutableRefObject<TextRef>, args: Steps[]) => void);
 
 type TypingTextProps = {
-	loop: false | number;
-	steps: Steps[];
-	style: any;
-	blinkChar: string;
-	blinkCursor: boolean;
-	editDelay: number;
-	deleteDelay: number;
+	loop?: false | number;
+	steps?: Steps[];
+	style?: any;
+	blinkChar?: string;
+	blinkCursor?: boolean;
+	editDelay?: number;
+	deleteDelay?: number;
 };
 
 type TextRef = {
