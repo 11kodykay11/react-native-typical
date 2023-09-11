@@ -1,6 +1,6 @@
 {
 	"name": "react-native-typical",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "react-typical for React Native. react-typical have trouble running in react native app due to the use of node. ",
 	"main": "dist/index.js",
 	"scripts": {

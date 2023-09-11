@@ -4,6 +4,9 @@ React native version of react-typical package.
 
 ## Change Log
 
+1.2.2
+- Making all the props optional in typescript
+
 1.2.1
 - Adding typescript support
 - Fixed an issue where new steps transition was not happening gracefully but instead flickering
