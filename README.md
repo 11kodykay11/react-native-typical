@@ -4,6 +4,9 @@ React native version of react-typical package.
 
 ## Change Log
 
+1.2.3
+- Minor typing fix
+
 1.2.2
 - Making all the props optional in typescript
 
