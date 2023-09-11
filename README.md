@@ -3,6 +3,11 @@
 React native version of react-typical package.
 
 ## Change Log
+
+1.2.1
+- Adding typescript support
+- Fixed an issue where new steps transition was not happening gracefully but instead flickering
+
 1.2.0
 - Added support to gracefully transition to new steps
 - Added support to change blinking character using `blinkChar`. Default to '|'

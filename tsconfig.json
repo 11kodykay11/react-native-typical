@@ -1,8 +1,10 @@
 {
 	"compilerOptions": {
-		"target": "es6",
+		"lib": ["ES2022"],
+		"jsx": "react",
+		"target": "es2019",
 		"module": "commonjs",
-		"sourceMap": true,
+		"sourceMap": false,
 		"outDir": "./dist",
 		"strict": true,
 		"moduleResolution": "node",
